@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 using strange.extensions.mediation.impl;
 using strange.extensions.signal.impl;
+using System;
 
 namespace strange.examples.CardGame {
 	public class CardManager : MonoBehaviour , ICardsManager {
@@ -73,7 +74,7 @@ namespace strange.examples.CardGame {
 
 		private int GetRandomInt()
 		{
-			int rand = Random.Range (0, 10);
+			int rand = UnityEngine.Random.Range (0, 10);
 			if (tempList.Contains (rand))
 				return GetRandomInt ();
 			else {
@@ -268,10 +269,28 @@ namespace strange.examples.CardGame {
 
 			tempList.Clear ();
 			DeleteAllCards ();
-			/* For now we have only 2 players.i.e Player and AI Player(Computer/Mobile) , so hard coding for now
+            /* For now we have only 2 players.i.e Player and AI Player(Computer/Mobile) , so hard coding for now
 			 * */
-			GenerateCards(pCurrentGameMode._CardsCount , true);
-			GenerateCards(pCurrentGameMode._CardsCount , false);
+            //	GenerateCards(pCurrentGameMode._CardsCount , true);
+            //	GenerateCards(pCurrentGameMode._CardsCount , false);
+            GenerateCards(true);
+            GenerateCards(false);
 		}
-	}
+
+        private void GenerateCards(bool mIsAICard)
+        {
+            int count = pCurrentGameMode._CardsCount;
+            Transform parentTransform;
+            if (mIsAICard)
+                parentTransform = AICards.transform;
+            else
+                parentTransform = PlayerCards.transform;
+            for (int i = 0; i < count; i++)
+            {
+                GameObject obj = CreateObject(parentTransform, mIsAICard);
+                obj.transform.position = new Vector3(obj.transform.position.x + i * CardSpaceWidth, obj.transform.position.y, obj.transform.position.z);
+            }
+
+        }
+    }
 }
