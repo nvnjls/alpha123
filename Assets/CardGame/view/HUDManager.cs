@@ -50,7 +50,10 @@ namespace strange.examples.CardGame {
 				case "Mode-3":
 					setGameMode.Dispatch(CardManager.Type.EXPERT);
 					break;
-			}
+                case "Mode-4":
+                    setGameMode.Dispatch(CardManager.Type.PROFESSIONAL);
+                    break;
+            }
 			startgame.Dispatch();
 		}
 

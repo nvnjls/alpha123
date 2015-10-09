@@ -25,7 +25,8 @@ namespace strange.examples.CardGame {
 		{
 			BEGINNER = 0,
 			INTERMEDIATE = 1 ,
-			EXPERT = 2
+			EXPERT = 2,
+                PROFESSIONAL = 3
 		}
 
 		[System.Serializable]
@@ -56,6 +57,7 @@ namespace strange.examples.CardGame {
 		{
 			if(!initDone)
 			{
+                _GameModes.Add(new GameMode() { _Type = Type.PROFESSIONAL, _IsSingleStep = false, _CardsCount = 4 });
 				pInstance = this;
 				sprites = Resources.LoadAll<Sprite>(SheetName); 
 				SetGameMode (Type.BEGINNER);

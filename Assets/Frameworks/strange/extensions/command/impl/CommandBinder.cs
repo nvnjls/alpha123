@@ -121,7 +121,7 @@ namespace strange.extensions.command.impl
 			object[] values = binding.value as object[];
 			if (depth < values.Length)
 			{
-				Type cmd = values [depth] as Type;
+				Type cmd = values[depth] as Type;
 				ICommand command = invokeCommand (cmd, binding, data, depth);
 				ReleaseCommand (command);
 			}
