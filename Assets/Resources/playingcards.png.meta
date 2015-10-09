@@ -1,0 +1,158 @@
+fileFormatVersion: 2
+guid: 1ac6a185c18011c4bb46813ed10b2099
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: playingcards_0
+    21300002: playingcards_1
+    21300004: playingcards_2
+    21300006: playingcards_3
+    21300008: playingcards_4
+    21300010: playingcards_5
+    21300012: playingcards_6
+    21300014: playingcards_7
+    21300016: playingcards_8
+    21300018: playingcards_9
+    21300020: playingcards_28
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: playingcards_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 294
+        width: 73
+        height: 100
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: playingcards_1
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 294
+        width: 73
+        height: 100
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: playingcards_2
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 294
+        width: 73
+        height: 100
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: playingcards_3
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 294
+        width: 73
+        height: 100
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: playingcards_4
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 294
+        width: 73
+        height: 100
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: playingcards_5
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 294
+        width: 73
+        height: 100
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: playingcards_6
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 294
+        width: 73
+        height: 100
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: playingcards_7
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 294
+        width: 73
+        height: 100
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: playingcards_8
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 294
+        width: 73
+        height: 100
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: playingcards_9
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 294
+        width: 73
+        height: 100
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
