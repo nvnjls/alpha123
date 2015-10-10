@@ -42,16 +42,16 @@ namespace strange.examples.CardGame {
 			switch(Mode.text)
 			{
 				case "Mode-1" :
-					setGameMode.Dispatch(CardManager.Type.BEGINNER);
+					setGameMode.Dispatch(MyType.BEGINNER);
 					break;
 				case "Mode-2":
-					setGameMode.Dispatch(CardManager.Type.INTERMEDIATE);
+					setGameMode.Dispatch(MyType.INTERMEDIATE);
 					break;
 				case "Mode-3":
-					setGameMode.Dispatch(CardManager.Type.EXPERT);
+					setGameMode.Dispatch(MyType.EXPERT);
 					break;
                 case "Mode-4":
-                    setGameMode.Dispatch(CardManager.Type.PROFESSIONAL);
+                    setGameMode.Dispatch(MyType.PROFESSIONAL);
                     break;
             }
 			startgame.Dispatch();

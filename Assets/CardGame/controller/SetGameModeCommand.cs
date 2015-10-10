@@ -12,7 +12,7 @@ namespace strange.examples.CardGame {
 		public ICardsManager manager { get; set; }
 
 		[Inject]
-		public CardManager.Type type { get; set; }
+		public MyType type { get; set; }
 
 		public override void Execute() {
 			// perform all game start setup here

@@ -22,18 +22,18 @@ namespace strange.examples.CardGame {
 		[Inject]
 		public UpdateAIScoreSignal updateAIScore { get; set; }
 
-		public enum Type : int
+/*		public enum Type : int
 		{
 			BEGINNER = 0,
 			INTERMEDIATE = 1 ,
 			EXPERT = 2,
                 PROFESSIONAL = 3
-		}
+		}*/
 
 		[System.Serializable]
 		public class GameMode
 		{
-			public Type _Type;
+			public MyType _Type;
 			public int _CardsCount;
 			public bool _IsSingleStep ;
 		}
@@ -58,10 +58,10 @@ namespace strange.examples.CardGame {
 		{
 			if(!initDone)
 			{
-                _GameModes.Add(new GameMode() { _Type = Type.PROFESSIONAL, _IsSingleStep = false, _CardsCount = 4 });
+                _GameModes.Add(new GameMode() { _Type = MyType.PROFESSIONAL, _IsSingleStep = false, _CardsCount = 4 });
 				pInstance = this;
 				sprites = Resources.LoadAll<Sprite>(SheetName); 
-				SetGameMode (Type.BEGINNER);
+				SetGameMode (MyType.BEGINNER);
 				tempList = new List<int>();
 				initDone = true;
 			}
@@ -248,7 +248,7 @@ namespace strange.examples.CardGame {
 				DestroyObject (card.gameObject);
 
 		}
-		public void SetGameMode(Type type)
+		public void SetGameMode(MyType type)
 		{
 			foreach (GameMode mode in _GameModes)
 				if (mode._Type == type)

@@ -3,7 +3,7 @@
 
 		void CardSelected(UiCard selectedCard);
 		UiCard GetSelectedCard();
-		void SetGameMode(CardManager.Type mode);
+		void SetGameMode(MyType mode);
 		void StartGame();
 		void OnCheck();
 	}
