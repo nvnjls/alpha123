@@ -26,10 +26,11 @@ namespace strange.examples.CardGame {
 			commandBinder.Bind<UpdatePlayerScoreSignal>().To<UpdatePlayerScoreCommand>().Pooled();
 			commandBinder.Bind<UpdateAIScoreSignal>().To<UpdateAIScoreCommand>().Pooled();
 
-			CardManager manager = GameObject.Find("CanvasObj").GetComponent<CardManager>();
-			injectionBinder.Bind<ICardsManager>().ToValue(manager);
-
-			HUDManager viewmanager = manager.GetComponentInChildren<HUDManager>();
+            CardManager cardManager = GameObject.Find("CanvasObj").GetComponent<CardManager>();
+            ResultManager resultManager = GameObject.Find("CanvasObj").GetComponent<ResultManager>();
+            injectionBinder.Bind<ICardsManager>().ToValue(cardManager);
+            injectionBinder.Bind<IResultManager>().ToValue(resultManager);
+			HUDManager viewmanager = cardManager.GetComponentInChildren<HUDManager>();
 			injectionBinder.Bind<IHUDViewManager>().ToValue(viewmanager);
 		}
 		

@@ -7,7 +7,7 @@ namespace strange.examples.CardGame
 	public class StartSignal : Signal {}
 	public class CardSelectedSignal : Signal<UiCard> {}
 	public class CheckCardsSignal : Signal {}
-	public class SetGameModeSignal : Signal<MyType> {}
+	public class SetGameModeSignal : Signal<GameModeType> {}
 	public class ShowWarningSignal : Signal<bool> {}
 	public class ShowResultSignal : Signal<bool , string> {}
 	public class UpdatePlayerScoreSignal : Signal<int> {}

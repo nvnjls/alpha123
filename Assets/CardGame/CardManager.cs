@@ -8,7 +8,7 @@ using strange.extensions.signal.impl;
 using System;
 
 namespace strange.examples.CardGame {
-	public class CardManager : MonoBehaviour , ICardsManager {
+	public class CardManager : ICardsManager {
 
 		[Inject]
 		public ShowResultSignal showResult { get; set; }
@@ -22,52 +22,51 @@ namespace strange.examples.CardGame {
 		[Inject]
 		public UpdateAIScoreSignal updateAIScore { get; set; }
 
-/*		public enum Type : int
-		{
-			BEGINNER = 0,
-			INTERMEDIATE = 1 ,
-			EXPERT = 2,
-                PROFESSIONAL = 3
-		}*/
 
-		[System.Serializable]
+        /*[System.Serializable]
 		public class GameMode
 		{
-			public MyType _Type;
+			public GameModeType _Type;
 			public int _CardsCount;
 			public bool _IsSingleStep ;
-		}
-		public List<GameMode> _GameModes;
+		}*/
+       
+        public List<GameMode> _GameModes;
 		public string SheetName ;
-		public GameObject UiCardObj;
+        public GameObject UiCardObj;
 		public GameObject AICards;
 		public GameObject PlayerCards;
 		public float CardSpaceWidth = 40;
 		private Sprite[] sprites;
-		private GameMode pCurrentGameMode;
+		//public new GameMode pCurrentGameMode;
 		/*
 		 * This list will be used to make sure that the Random numbers will not be repeated
 		 * */
-		private List<int> tempList;
+		public List<int> tempList;
 		public static CardManager pInstance;
-		public UiCard pSelectedCard = null;
-		private int mPlayerScore , mAIScore , mCheckCount;
-		private bool initDone = false;
+		//public new UiCard pSelectedCard = null;
+		//public new int mPlayerScore , mAIScore , mCheckCount;
+		public bool initDone = false;
 		
-		public void StartGame () 
+		public override void  StartGame () 
 		{
-			if(!initDone)
-			{
-                _GameModes.Add(new GameMode() { _Type = MyType.PROFESSIONAL, _IsSingleStep = false, _CardsCount = 4 });
-				pInstance = this;
+            if (!initDone)
+            {
+                _GameModes = new List<GameMode>();
+                _GameModes.Add(new GameMode { _Type = GameModeType.BEGINNER, _IsSingleStep = true, _CardsCount=1 });
+                _GameModes.Add(new GameMode { _Type = GameModeType.INTERMEDIATE, _IsSingleStep = true, _CardsCount = 3 });
+                _GameModes.Add(new GameMode { _Type = GameModeType.EXPERT, _IsSingleStep = false, _CardsCount = 3 });
+                _GameModes.Add(new GameMode { _Type = GameModeType.PROFESSIONAL, _IsSingleStep = false, _CardsCount = 4 });
+                pInstance = this;
 				sprites = Resources.LoadAll<Sprite>(SheetName); 
-				SetGameMode (MyType.BEGINNER);
+				SetGameMode (GameModeType.BEGINNER);
 				tempList = new List<int>();
 				initDone = true;
+                
 			}
 			Restart ();		
 		}
-		public UiCard GetSelectedCard ()
+		public override UiCard GetSelectedCard ()
 		{
 			return pSelectedCard;
 		}
@@ -100,7 +99,7 @@ namespace strange.examples.CardGame {
 			return obj;
 		}
 
-		public void CardSelected(UiCard selectedCard)
+		public override void CardSelected(UiCard selectedCard)
 		{
 			UiCard []playerCards = PlayerCards.GetComponentsInChildren<UiCard> ();
 			pSelectedCard = selectedCard;
@@ -128,7 +127,7 @@ namespace strange.examples.CardGame {
 		/*
 		 * This is to Show the AI cards to the User after the player clicks of Submit.
 		 * */
-		public void ShowAICards()
+		public override void ShowAICards()
 		{
 			UiCard [] cards = GetAICards ();
 			foreach(UiCard card in cards)
@@ -161,14 +160,15 @@ namespace strange.examples.CardGame {
 		{
 			return  AICards.GetComponentsInChildren<UiCard> ();
 		}
-		public UiCard[] GetPlayerCards()
+		public override UiCard[] GetPlayerCards()
 		{
 			return  PlayerCards.GetComponentsInChildren<UiCard> ();
 		}
 
 
-		public void OnCheck()
+		public override void OnCheck()
 		{
+            
 			if ((pSelectedCard == null && GetPlayerCards ().Length > 1) || (pSelectedCard != null && pSelectedCard.pHasChecked))
 			{
 				Debug.Log ("Please select a card");
@@ -196,13 +196,13 @@ namespace strange.examples.CardGame {
 			pSelectedCard.ResetPosition();
 			pSelectedCard = null;
 		}
-		private void UpdateScores()
+		public override void UpdateScores()
 		{
 			updatePlayerScore.Dispatch (mPlayerScore);
 			updateAIScore.Dispatch (mAIScore);
 		}
 
-		private UiCard GetLeastHigherPriorityAICard(UiCard selectedCard)
+		public override UiCard GetLeastHigherPriorityAICard(UiCard selectedCard)
 		{
 			UiCard [] cards = GetAICards ();
 			UiCard LeastHigherPriorityCard = null;
@@ -228,7 +228,7 @@ namespace strange.examples.CardGame {
 		/* 
 		 * This is to get the Max priority card from the give array of Cards
 		 * */
-		private UiCard GetMaxPriorityCard(UiCard []cards)
+		public override UiCard GetMaxPriorityCard(UiCard []cards)
 		{
 			UiCard maxCard = cards [0];
 			foreach(UiCard card in cards)
@@ -248,7 +248,7 @@ namespace strange.examples.CardGame {
 				DestroyObject (card.gameObject);
 
 		}
-		public void SetGameMode(MyType type)
+		public override void SetGameMode(GameModeType type)
 		{
 			foreach (GameMode mode in _GameModes)
 				if (mode._Type == type)
@@ -271,13 +271,13 @@ namespace strange.examples.CardGame {
 			DeleteAllCards ();
             /* For now we have only 2 players.i.e Player and AI Player(Computer/Mobile) , so hard coding for now
 			 * */
-            //	GenerateCards(pCurrentGameMode._CardsCount , true);
-            //	GenerateCards(pCurrentGameMode._CardsCount , false);
-            GenerateCards(true);
-            GenerateCards(false);
+            GenerateCards(pCurrentGameMode._CardsCount , true);
+            GenerateCards(pCurrentGameMode._CardsCount , false);
+           //GenerateCards(true);
+           //GenerateCards(false);
 		}
 
-        private void GenerateCards(bool mIsAICard)
+       private void GenerateCards(bool mIsAICard)
         {
             int count = pCurrentGameMode._CardsCount;
             Transform parentTransform;

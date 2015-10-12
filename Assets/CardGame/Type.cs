@@ -1,4 +1,4 @@
-﻿public enum MyType : int
+﻿public enum GameModeType : int
 {
     BEGINNER = 0,
     INTERMEDIATE = 1,

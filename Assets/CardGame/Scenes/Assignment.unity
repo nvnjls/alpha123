@@ -2162,6 +2162,7 @@ GameObject:
   - 4: {fileID: 1957832264}
   - 114: {fileID: 1957832265}
   - 114: {fileID: 1957832266}
+  - 114: {fileID: 1957832267}
   m_Layer: 0
   m_Name: CanvasObj
   m_TagString: Untagged
@@ -2193,22 +2194,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b958409f751164d80690ea405b820f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _GameModes:
-  - _Type: 0
-    _CardsCount: 1
-    _IsSingleStep: 1
-  - _Type: 1
-    _CardsCount: 3
-    _IsSingleStep: 1
-  - _Type: 2
-    _CardsCount: 3
-    _IsSingleStep: 0
+  pSelectedCard: {fileID: 0}
+  mPlayerScore: 0
+  mAIScore: 0
+  mCheckCount: 0
   SheetName: playingcards
   UiCardObj: {fileID: 1170375984}
   AICards: {fileID: 1496505594}
   PlayerCards: {fileID: 1336106590}
   CardSpaceWidth: 45
-  pSelectedCard: {fileID: 0}
+  tempList: 
+  initDone: 0
 --- !u!114 &1957832266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2220,6 +2216,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a58e999a621dbc4887145ff220e11b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1957832267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1957832263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3146751911300b4fabb76b476f476e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerCards: {fileID: 1336106590}
 --- !u!1 &1970565700
 GameObject:
   m_ObjectHideFlags: 0
